@@ -32,16 +32,14 @@ public class ShoppingCartApplication {
 	public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
 			DefaultJmsListenerContainerFactoryConfigurer configurer) {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-		 // anonymous class
 		  factory.setErrorHandler(
 		      new ErrorHandler() {
 		        @Override
 		        public void handleError(Throwable t) {
-		          System.err.println("An error has occurred in the transaction");
+		          System.err.println("An error has occurred in shopping cart service");
 		        }
 		      });
-		  // lambda function
-		  factory.setErrorHandler(t -> System.err.println("An error has occurred in the transaction"));
+		  factory.setErrorHandler(t -> System.err.println("An error has occurred in shopping cart service"));
 		configurer.configure(factory, connectionFactory);
 		return factory;
 	}

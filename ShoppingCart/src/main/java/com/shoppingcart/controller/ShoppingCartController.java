@@ -31,6 +31,10 @@ public class ShoppingCartController {
 	@Autowired
 	private JmsTemplate jmsTemplate;
 
+	/**
+	 * Send the Shopping cart details to JMS Queue
+	 * @param shoppingCart
+	 */
 	@PostMapping(value = "/sendShoppingProduct")
 	public void sendShoppingProduct(@RequestBody ShoppingCart shoppingCart) {
 		jmsTemplate.convertAndSend("shoppingCartQueue", shoppingCart);

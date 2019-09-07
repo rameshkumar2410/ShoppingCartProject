@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * 
+ * Shopping Cart Entity
  * @author Ramesh
  *
  */

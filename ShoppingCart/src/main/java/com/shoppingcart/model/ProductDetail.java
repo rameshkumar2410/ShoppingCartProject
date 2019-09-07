@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * 
+ * Product Detail Entity
  * @author Ramesh
  *
  */
