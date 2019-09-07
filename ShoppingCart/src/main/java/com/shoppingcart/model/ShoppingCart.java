@@ -2,6 +2,8 @@ package com.shoppingcart.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,17 +29,35 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@DynamicInsert
+@DynamicUpdate
 @Entity
-@Table(name="ShoppingCart")
+@Table(name = "ShoppingCart")
 public class ShoppingCart {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderId;
-	
-	@NotNull
-	@OneToMany(mappedBy = "shoppingCart")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "order_id")
+	private long orderId;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="order_id")
 	private List<ProductDetail> productDetail;
+
+	public long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
+	}
+
+	public List<ProductDetail> getProductDetail() {
+		return productDetail;
+	}
+
+	public void setProductDetail(List<ProductDetail> productDetail) {
+		this.productDetail = productDetail;
+	}
 
 }

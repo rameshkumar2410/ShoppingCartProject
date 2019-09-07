@@ -1,13 +1,10 @@
 package com.shoppingcart.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -27,12 +24,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="ProductDetail")
+@Table(name = "ProductDetail")
 public class ProductDetail {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int productId;
+	@Column(name = "ID", nullable = false, length = 10)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long productId;
 
 	@Column(name = "productName")
 	private String productName;
@@ -42,10 +40,37 @@ public class ProductDetail {
 
 	@Column(name = "price")
 	private double price;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "orderId")
-	private ShoppingCart shoppingCart;
-	
 
+	public long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(long productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 }
