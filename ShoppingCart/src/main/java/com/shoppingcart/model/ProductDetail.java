@@ -1,15 +1,14 @@
 package com.shoppingcart.model;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,15 +27,25 @@ import lombok.Setter;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="ShoppingCart")
-public class ShoppingCart {
+@Table(name="ProductDetail")
+public class ProductDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderId;
+	private int productId;
+
+	@Column(name = "productName")
+	private String productName;
+
+	@Column(name = "quantity")
+	private int quantity;
+
+	@Column(name = "price")
+	private double price;
 	
-	@NotNull
-	@OneToMany(mappedBy = "shoppingCart")
-	private List<ProductDetail> productDetail;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "orderId")
+	private ShoppingCart shoppingCart;
+	
 
 }
