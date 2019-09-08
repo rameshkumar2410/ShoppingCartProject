@@ -19,7 +19,11 @@ import com.shoppingcart.model.ProductDetail;
 import com.shoppingcart.model.ShoppingCart;
 import com.shoppingcart.repository.ShoppingOrderRepositsory;
 import com.shoppingcart.service.ShoppingCartService;
-
+/**
+ * 
+ * @author Ramesh
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ShoppingCartApplicationTests {
@@ -33,6 +37,9 @@ public class ShoppingCartApplicationTests {
 	@Autowired
 	ShoppingOrderRepositsory shoppingOrderRepo;
 
+	/**
+	 * To test the Message has been received, Please check the console as it reached the JMS listener and Save the data.
+	 */
 	@Test
 	public void messageReceiverTest() {
 		List<ProductDetail> details = new ArrayList<ProductDetail>();
@@ -44,12 +51,18 @@ public class ShoppingCartApplicationTests {
 				.isEqualTo(this.jmsTemplate.receiveAndConvert("shoppingCartQueue"));
 	}
 
+	/**
+	 * Test case is used to check the over all shopping cart has some data available, it will fail if we don't add any Products.
+	 */
 	@Test
 	public void getShoppingCartTest() {
 		List<ShoppingCart> shoppingCarts = shoppingCartService.getShoppingCartList();
 		assertTrue((shoppingCarts.isEmpty() ? false : true));
 	}
 
+	/**
+	 * Test case is used to check the particular Order Id is availabel in database or not, This will fail if we dont have Order Id as 1.
+	 */
 	@Test
 	public void getShoppingCartForOrderIdTest() {
 		Optional<ShoppingCart> shoppingCarts = shoppingCartService.getShoppingCartDetails(1);
