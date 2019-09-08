@@ -19,9 +19,9 @@ public class ShoppingCartMessageHandler {
 
 	@JmsListener(destination = "shoppingCartQueue", containerFactory = "myFactory")
 	public void receiveShoppingCart(ShoppingCart shoppingCart) {
-		System.out.println("Received Shooping Order Message"+shoppingCart.getOrderId());
+		System.out.println("Received Shopping Order Details"+shoppingCart.getOrderId());
 		ShoppingCart shoppingCarts=shoppingCartService.save(shoppingCart);
-		System.out.println("Saved Shooping Order Message"+shoppingCarts.getOrderId());
+		System.out.println("Saved Shopping Order Details"+shoppingCarts.getOrderId());
 	}
 
 }

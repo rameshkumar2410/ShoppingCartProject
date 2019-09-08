@@ -44,6 +44,16 @@ public class ShoppingCart {
 	@JoinColumn(name="order_id")
 	private List<ProductDetail> productDetail;
 
+
+	public ShoppingCart(long orderId, List<ProductDetail> productDetail) {
+		this.orderId = orderId;
+		this.productDetail = productDetail;
+	}
+
+	public ShoppingCart() {
+		
+	}
+
 	public long getOrderId() {
 		return orderId;
 	}

@@ -41,9 +41,19 @@ public class ProductDetail {
 	@Column(name = "price")
 	private double price;
 
-	public long getProductId() {
-		return productId;
+	public ProductDetail() {
+		
 	}
+	
+	
+	public ProductDetail(long productId, String productName, int quantity, double price) {
+		this.productId = productId;
+		this.productName = productName;
+		this.quantity = quantity;
+		this.price = price;
+	}
+
+
 
 	public void setProductId(long productId) {
 		this.productId = productId;
