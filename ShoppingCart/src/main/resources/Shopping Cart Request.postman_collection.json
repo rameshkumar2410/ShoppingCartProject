@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "f788e85a-5d91-4058-ab0e-88607c47b981",
+		"name": "Shopping Cart Request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8787/shopping/sendShoppingProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "orderId",
+						"value": "10",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "productName",
+						"value": "Soap",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"productDetail\":[{\"productName\" :\"Beauty Soap\",\"quantity\" : 2,\"price\" :90.00},\r\n{\"productName\" :\"GoodDay Biscuits\",\"quantity\" : 5,\"price\" :50.00},\r\n{\"productName\" :\"Nuts\",\"quantity\" : 4,\"price\" :180.00}]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/shopping/sendShoppingProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"shopping",
+						"sendShoppingProduct"
+					]
+				},
+				"description": "Save the Shopping Product details"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/shopping/getShoppingDetails/1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "orderId",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/shopping/getShoppingDetails/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"shopping",
+						"getShoppingDetails",
+						"1"
+					]
+				},
+				"description": "Get the Particular Product based on ID. Eg id Passed is '1'"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/shopping/getShoppingCartList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/shopping/getShoppingCartList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"shopping",
+						"getShoppingCartList"
+					]
+				},
+				"description": "This request will display the entire Shopping cart history"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/shopping/sendShoppingProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"productDetail\":[{\"productName\" :\"Oil\",\"quantity\" : 1,\"price\" :600.10}]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/shopping/sendShoppingProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"shopping",
+						"sendShoppingProduct"
+					]
+				},
+				"description": "Save Shopping Cart with Single Product"
+			},
+			"response": []
+		}
+	]
+}
