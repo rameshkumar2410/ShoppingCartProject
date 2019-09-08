@@ -138,6 +138,32 @@
 				"description": "Save Shopping Cart with Single Product"
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8787/shopping/deleteShoppingOrder/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/shopping/deleteShoppingOrder/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"shopping",
+						"deleteShoppingOrder",
+						"1"
+					]
+				},
+				"description": "Delete the Product"
+			},
+			"response": []
 		}
 	]
 }
