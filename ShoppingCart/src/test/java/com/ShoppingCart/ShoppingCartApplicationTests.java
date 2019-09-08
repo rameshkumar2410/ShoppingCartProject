@@ -61,7 +61,7 @@ public class ShoppingCartApplicationTests {
 	}
 
 	/**
-	 * Test case is used to check the particular Order Id is availabel in database or not, This will fail if we dont have Order Id as 1.
+	 * Test case is used to check the particular Order Id is available in database or not, This will fail if we dont have Order Id as 1.
 	 */
 	@Test
 	public void getShoppingCartForOrderIdTest() {
